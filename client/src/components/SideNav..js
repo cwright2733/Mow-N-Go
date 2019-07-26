@@ -1,34 +1,86 @@
 import React from "react";
 import "../styles/SideNav.css";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-
-// By importing the Navbar.css file, it is added to the DOM whenever this component loads
-
-// We can also style a component inside of its JavaScript file by adding style properties to its rendered elements
-// Unlike regular HTML, a JSX style property must be an object instead of a string
-// On a style object, we camelCase all property names, and put all of the values in quotes
-// Non quoted values default to "pixels", e.g. height, margin, padding
-
-
-
-// We use JSX curly braces to evaluate the style object on the JSX tag
+// Each logical "route" has two components, one for
+// the sidebar and one for the main area. We want to
+// render both of them in different places when the
+// path matches the current URL.
+const routes = [
+  {
+    path: "/",
+    exact: true,
+    main: () => <h2>Home</h2>
+  },
+  {
+    path: "/RequestJob",
+  
+  },
+  {
+    path: "/AvailableJob",
+ 
+  },
+  {
+    path: "/Ratings",
+ 
+  }
+];
 
 function SideNav() {
-    return (
-        <nav className="SideNav">
+  return (
+    <Router>
+      <div style={{ display: "flex" }}>
+        <div className="sidenav">
+          <ul style={{ listStyleType: "none", padding: 0 }}>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/RequestJob">RequestJob</Link>
+            </li>
+            <li>
+              <Link to="/AvailableJob">AvailableJobs</Link>
+            </li>
+            <li>
+              <Link to="/Ratings">Ratings</Link>
+            </li>
+          </ul>
 
+          {routes.map((route, index) => (
+            // You can render a <Route> in as many places
+            // as you want in your app. It will render along
+            // with any other <Route>s that also match the URL.
+            // So, a sidebar or breadcrumbs or anything else
+            // that requires you to render multiple things
+            // in multiple places at the same URL is nothing
+            // more than multiple <Route>s.
 
-            <div class="sidenav">
-                <a href="#">Contact</a>
-                <a href="#">Request A Job</a>
-                <a href="#">Ratings</a>
-                <a href="http://localhost:3000/">About</a>
-            </div>
+            
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={route.sidebar}
+            />
+          ))}
+        </div>
 
-        
-
-        </nav>
-    );
+        <div style={{ flex: 1, padding: "10px" }}>
+          {routes.map((route, index) => (
+            // Render more <Route>s with the same paths as
+            // above, but different components this time.
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={route.main}
+            />
+          ))}
+        </div>
+      </div>
+    </Router>
+  );
 }
+
 
 export default SideNav;

@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/cwright2733/Mow-N-Go/issues"
   },
-  "homepage": "https://github.com/cwright2733/Mow-N-Go#readme"
+  "homepage": "https://github.com/cwright2733/Mow-N-Go#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.2.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^3.0.1",
+    "recompose": "^0.30.0"
+  }
 }
