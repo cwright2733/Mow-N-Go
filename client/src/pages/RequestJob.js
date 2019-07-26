@@ -23,7 +23,18 @@ class RequestJob extends Component {
   <input type="text" class="form-control" placeholder="Last name" />
   </div>
   
+  
     </div>
+
+    <div class="row">
+    <div class="col"> 
+    <hr />
+      
+    <input type="text" class="form-control" placeholder="Phone Numer" />
+    </div>
+    </div>
+
+      
 
 
   
@@ -33,13 +44,12 @@ class RequestJob extends Component {
 <div  />
 
 <div class="form-group">
-  <label for="exampleFormControlSelect2">Example multiple select</label>
+  <label for="exampleFormControlSelect2">Select what to be done!</label>
   <select multiple class="form-control" id="exampleFormControlSelect2">
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
+    <option>Grass Cut</option>
+    <option>Edge Trimmer</option>
+    <option>Rake Leaves</option>
+    <option>Plant Flowers</option>
   </select>
 </div>
 <div class="form-group" />
