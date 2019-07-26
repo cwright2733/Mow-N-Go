@@ -14,14 +14,17 @@ const routes = [
   },
   {
     path: "/RequestJob",
+    exact: true,
   
   },
   {
     path: "/AvailableJob",
+    exact: true,
  
   },
   {
     path: "/Ratings",
+    exact: true,
  
   }
 ];
