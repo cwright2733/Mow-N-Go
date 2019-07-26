@@ -82,11 +82,4 @@ class JobForm extends Component {
   }
 }
 
-
-  
-
-
-
-
-
 export default JobForm;
