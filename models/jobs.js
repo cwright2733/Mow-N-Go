@@ -1,32 +1,21 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
 const jobSchema = new Schema({
   firstName:  String,
   lastName: String,
-  trimHedges: {
-      selected: Boolean,
-      front: Boolean,
-      back: Boolean
-    },
-  edgeLawn:{
-    selected: Boolean,
-    front: Boolean,
-    back: Boolean
-  },
-  mowGrass:{
-    selected: Boolean,
-    front: Boolean,
-    back: Boolean
-  },
-  rakeLeaves:{
-    selected: Boolean,
-    front: Boolean,
-    back: Boolean
-  },
-  accepted: Boolean,
+  phoneNum: String,
+  email: String,
+  address: String,
+  trimHedges: {type: Boolean, default: false},
+  edgeLawn: {type: Boolean, default: false},
+  mowGrass: {type: Boolean, default: false},
+  rakeLeaves: {type: Boolean, default: false},
+  instructions: String,
+  accepted: {type: Boolean, default: false},
   date: { type: Date, default: Date.now },
 });
-const Jobs = mongoose.model('Jobs', jobSchema);
-export default Jobs;
+
+const Job = mongoose.model('Job', jobSchema);
+
+export default Job;

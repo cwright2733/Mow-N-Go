@@ -5,13 +5,6 @@ import RequestJob from "./pages/RequestJob";
 import SideNav from "./components/SideNav.";
 
 
-
-
-
-
-
-
-
 function App() {
   return (
     <Router>
@@ -21,8 +14,8 @@ function App() {
   
       <Switch>
         <Route path="/RequestJob" component={RequestJob} />
-        <Route path="/AvailableJob" component={RequestJob} />
-        <Route path="/Ratings" component={RequestJob} />
+        <Route path="/AvailableJobs" component />
+        <Route path="/Ratings" component/>
       </Switch>
       </div>
     </div>

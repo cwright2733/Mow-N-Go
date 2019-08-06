@@ -42,7 +42,7 @@ function SideNav() {
               <Link to="/RequestJob">RequestJob</Link>
             </li>
             <li>
-              <Link to="/AvailableJob">AvailableJobs</Link>
+              <Link to="/AvailableJobs">AvailableJobs</Link>
             </li>
             <li>
               <Link to="/Ratings">Ratings</Link>
@@ -57,7 +57,6 @@ function SideNav() {
             // that requires you to render multiple things
             // in multiple places at the same URL is nothing
             // more than multiple <Route>s.
-
             
             <Route
               key={index}
@@ -84,6 +83,5 @@ function SideNav() {
     </Router>
   );
 }
-
 
 export default SideNav;

@@ -1,4 +1,4 @@
 module.exports = {
-    Book: require("./jobs")
+    Job: require("./jobs")
   };
   
