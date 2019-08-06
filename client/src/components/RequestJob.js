@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import "../styles/RequestJob.css";
-import Job from "../../../models/jobs"
-const app = require(App);
-const mongoose = require("mongoose");
-
+import axios from 'axios';
 
 class RequestJob extends Component {
   // Setting the component's initial state
+  // the state keys match up with the db model attributes
   state = {
     firstName: "",
     lastName: "",
@@ -69,13 +68,37 @@ class RequestJob extends Component {
     });
   };
 
-// i think this is done
+  // axios.post('/api/jobs', {
+  //   firstName: this.state.firstName,
+  //   lastName: this.state.lastName,
+  //   phoneNum: this.state.phoneNum,
+  //   email: this.state.email,
+  //   address: this.state.address,
+  //   trimHedges: this.state.trimHedges,
+  //   edgeLawn: this.state.edgeLawn,
+  //   mowGrass: this.state.mowGrass,
+  //   rakeLeaves: this.state.rakeLeaves,
+  //   instructions: this.state.instructions
+  // }).then(res => {
+  //   this.setState({
+  //     firstName: "",
+  //     lastName: "",
+  //     phoneNum: "",
+  //     email: "",
+  //     address: "",
+  //     trimHedges: false,
+  //     edgeLawn: false,
+  //     mowGrass: false,
+  //     rakeLeaves: false,
+  //     instructions: ""
+  //   });
+
   render() {
     // Each input must have a `value`, `name`, and `onChange` prop
     return (
       <div>
         <div class="jumbotron jumbotron-fluid">
-          <form className="form">
+          <form onSubmit={this.handleFormSubmit} className="form">
             <h1 class="display-4">Job Request Form</h1>
             <p class="lead"> Please fill out the form!!</p>
             <div class="row">
@@ -152,4 +175,4 @@ class RequestJob extends Component {
   }
 }
 
-export default RequestJob;
+export default withRouter(RequestJob);
