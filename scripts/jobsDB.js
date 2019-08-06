@@ -9,10 +9,21 @@ mongoose.connect(
     "mongodb://localhost/jobs"
 );
 
+const jobs = [
+    {
+        firstname: "Cameron",
+        lastName: "wright"
+        
+    }
+    
+] 
+
+
+
 
 db.jobs
   .remove({})
-  .then(() => db.jobs.collection.insertMany(bookSeed))
+  .then(() => db.jobs.collection.insertMany(jobs))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
