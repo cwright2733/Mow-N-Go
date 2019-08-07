@@ -15,7 +15,7 @@ state = {
     jobs: []
   }
   // Get all jobs to be shown on the list when component initially loads
-  componentDidMount() {
+  componentDidMount = () => {
     axios.get('/api/jobs')
       .then(res => {
             // all the data on res.data

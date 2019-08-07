@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const routes = requre('./routes/api/apiRoutes.js');
+const routes = require('./routes/api/jobRoutes.js');
 const PORT = process.env.PORT || 3000;
 
 const app = express ();
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
   }
   
   // Connect to the Mongo DB
-  mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/jobs");
+  mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/jobs", { useNewUrlParser: true });
   
   // Start the API server
   app.listen(PORT, function() {

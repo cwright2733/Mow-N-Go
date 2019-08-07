@@ -64,7 +64,7 @@ class RequestJob extends Component {
           rakeLeaves: false,
           instructions: ""
         });
-      }
+      })
     }
   };
 
