@@ -19,7 +19,7 @@ state = {
     axios.get('/api/jobs')
       .then(res => {
             // all the data on res.data
-            let jobs = res.data.jobs;
+            this.state.jobs = res.data.jobs;
         });
     }
 const drawerWidth = 240;
