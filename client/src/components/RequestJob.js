@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import "../styles/RequestJob.css";
 import axios from 'axios';
+import API from "../utils/API";
 
 class RequestJob extends Component {
   // Setting the component's initial state
@@ -37,61 +38,35 @@ class RequestJob extends Component {
     if (!this.state.firstName || !this.state.lastName || !this.state.phoneNum || !this.state.email || !this.state.address) {
       alert("Please complete the form, all fields are required except for 'Special Instructions'");
     } else {
-      const job = new Job({
-          firstName: this.state.firstName,
-          lastName: this.state.lastName,
-          phoneNum: this.state.phoneNum,
-          email: this.state.email,
-          address: this.state.address,
-          trimHedges: this.state.trimHedges,
-          edgeLawn: this.state.edgeLawn,
-          mowGrass: this.state.mowGrass,
-          rakeLeaves: this.state.rakeLeaves,
-          instructions: this.state.instructions
-        }).then(job.save(err => {
-          if (err) return console.log(err);
-        }));
+      API.saveJob({
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        phoneNum: this.state.phoneNum,
+        email: this.state.email,
+        address: this.state.address,
+        trimHedges: this.state.trimHedges,
+        edgeLawn: this.state.edgeLawn,
+        mowGrass: this.state.mowGrass,
+        rakeLeaves: this.state.rakeLeaves,
+        instructions: this.state.instructions
+      }).then(() => {
+        console.log(`${this.state.firstName} ${this.state.lastName}, your Job has been posted!`);
+        // clearing the state after job was saved to db
+        this.setState({
+          firstName: "",
+          lastName: "",
+          phoneNum: "",
+          email: "",
+          address: "",
+          trimHedges: false,
+          edgeLawn: false,
+          mowGrass: false,
+          rakeLeaves: false,
+          instructions: ""
+        });
+      }
     }
-    console.log(`${this.state.firstName} ${this.state.lastName}, your Job has been posted!`)
-    // clearing the state after job was saved to db
-    this.setState({
-      firstName: "",
-      lastName: "",
-      phoneNum: "",
-      email: "",
-      address: "",
-      trimHedges: false,
-      edgeLawn: false,
-      mowGrass: false,
-      rakeLeaves: false,
-      instructions: ""
-    });
   };
-
-  // axios.post('/api/jobs', {
-  //   firstName: this.state.firstName,
-  //   lastName: this.state.lastName,
-  //   phoneNum: this.state.phoneNum,
-  //   email: this.state.email,
-  //   address: this.state.address,
-  //   trimHedges: this.state.trimHedges,
-  //   edgeLawn: this.state.edgeLawn,
-  //   mowGrass: this.state.mowGrass,
-  //   rakeLeaves: this.state.rakeLeaves,
-  //   instructions: this.state.instructions
-  // }).then(res => {
-  //   this.setState({
-  //     firstName: "",
-  //     lastName: "",
-  //     phoneNum: "",
-  //     email: "",
-  //     address: "",
-  //     trimHedges: false,
-  //     edgeLawn: false,
-  //     mowGrass: false,
-  //     rakeLeaves: false,
-  //     instructions: ""
-  //   });
 
   render() {
     // Each input must have a `value`, `name`, and `onChange` prop
@@ -127,13 +102,13 @@ class RequestJob extends Component {
               <div class="col">
                 <hr />
                 <input
-                value={this.state.phoneNum}
-                name="phoneNum"
-                onChange={this.handleInputChange}
-                type="text"
-                class="form-control"
-                placeholder="(123)456-7890"
-                id='phoneNum' />
+                  value={this.state.phoneNum}
+                  name="phoneNum"
+                  onChange={this.handleInputChange}
+                  type="text"
+                  class="form-control"
+                  placeholder="(123)456-7890"
+                  id='phoneNum' />
               </div>
             </div>
             <div class="row">
@@ -176,3 +151,18 @@ class RequestJob extends Component {
 }
 
 export default withRouter(RequestJob);
+
+  // const job = new Job({
+  //     firstName: this.state.firstName,
+  //     lastName: this.state.lastName,
+  //     phoneNum: this.state.phoneNum,
+  //     email: this.state.email,
+  //     address: this.state.address,
+  //     trimHedges: this.state.trimHedges,
+  //     edgeLawn: this.state.edgeLawn,
+  //     mowGrass: this.state.mowGrass,
+  //     rakeLeaves: this.state.rakeLeaves,
+  //     instructions: this.state.instructions
+  //   }).then(job.save(err => {
+  //     if (err) return console.log(err);
+  //   }));

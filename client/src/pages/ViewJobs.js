@@ -19,9 +19,12 @@ state = {
     axios.get('/api/jobs')
       .then(res => {
             // all the data on res.data
-            this.state.jobs = res.data.jobs;
+            this.setState({
+              jobs: res.data
+            })
         });
     }
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -71,11 +74,11 @@ export default function PermanentDrawerLeft() {
         <div className={classes.toolbar} />
         <div className='jobList'>
         <List>
-          {this.state.jobs.map((job, job_index) => (
+          {this.state.jobs.length > 0 ? this.state.jobs.map((job, job_index) => (
             <ListItem button key={job_index}>
               <ListItemText primary={job.firstName} />
             </ListItem>
-          ))}
+          )): 'No Jobs posted yet'}
         </List>
         </div>
       </Drawer>
