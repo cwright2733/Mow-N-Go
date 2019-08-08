@@ -12,17 +12,6 @@ router.route('/').get((req,res) => {
     .catch(err => res.status(400).json('Error:' + err));   
 });
 
-// router.route('/add').post(function(req, res) {
-//     let job = new job(req.body);
-//     job.save()
-//         .then(job => {
-//             res.status(200).json({'todo': 'todo added successfully'});
-//         })
-//         .catch(err => {
-//             res.status(400).send('adding new todo failed');
-//         });
-// });
-
 
 
 router.route('/add').post((req,res) => {

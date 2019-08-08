@@ -68,12 +68,12 @@ export default class Form extends Component {
 
 
         const newJob = {
-            todo_FormFirstName: this.state. todo_FormFirstName,
-            todo_FormLastName: this.state.todo_FormLastName,
-            todo_description: this.state.todo_description,
-            todo_responsible: this.state.todo_responsible,
-            todo_priority: this.state.todo_priority,
-            todo_completed: this.state.todo_completed
+            todo_FormFirstName:this.state.todo_FormFirstName,
+            todo_FormLastName:this.state.todo_FormLastName,
+            todo_description:this.state.todo_description,
+            todo_responsible:this.state.todo_responsible,
+            todo_priority:this.state.todo_priority,
+            todo_completed:this.state.todo_completed
         }
 
         axios.post('http://localhost:3000/jobs/add', newJob)
@@ -113,7 +113,7 @@ export default class Form extends Component {
                         </div>
 
                     </div>
-                    <div className="form-group">
+                    <div className="form-group" placeholder="Email">
                         <label>Email: </label>
                         <input  type="text"
                                 className="form-control"
@@ -126,7 +126,7 @@ export default class Form extends Component {
                     <div className="form-group">
                         <label>Phone Number </label>
                         <input  type="text"
-                                className="form-control"
+                                className="form-control" placeholder="Phone Number"
                                 value={this.state.todo_responsible}
                                 onChange={this.onChangeTodoResponsible}
                                 />
@@ -178,7 +178,7 @@ export default class Form extends Component {
                         </div>
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Create Todo" className="btn btn-primary" />
+                        <input type="submit" value="Create " className="btn btn-primary" />
                     </div>
                 </form>
             </div>
