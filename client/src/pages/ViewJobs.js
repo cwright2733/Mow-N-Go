@@ -1,91 +1,64 @@
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
+import API from '../util/API';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
+import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import JobDetail from '../components/JobDetail';
+import Container from '@material-ui/core/Container';
 
-state = {
-    jobs: []
+
+class ViewJobs extends Component {
+  
+  state = {
+    jobs: [],
+    selectedJob: {}
   }
+
+  // function to get jobs
+  getJobs = () => {
+    API.getJobs()
+      .then(res => {
+        // all the data on res.data
+        this.setState({
+          jobs: res.data
+        })
+      }).catch(err => console.log(err));
+
+  }
+
+  handleJobAccept = id => {
+    API.deleteJob(id).then(res => this.getJobs());
+  };
+
+  // showJobDetail = () => {
+  //   this.setState({
+  //     selectedJob: this
+  //   });
+  // };
+
   // Get all jobs to be shown on the list when component initially loads
   componentDidMount = () => {
-    axios.get('/api/jobs')
-      .then(res => {
-            // all the data on res.data
-            this.setState({
-              jobs: res.data
-            })
-        });
-    }
+    this.getJobs();
+    console.log(this.state.jobs);
+  };
 
-const drawerWidth = 240;
+  render(){
+    return (
+      <Container maxWidth="sm">
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  toolbar: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
-  },
-}));
+      </Container>
+    )
+  }
 
-export default function PermanentDrawerLeft() {
-  const classes = useStyles();
+};
 
-  return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            View Posted Jobs
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        anchor="left"
-      >
-        <div className={classes.toolbar} />
-        <div className='jobList'>
-        <List>
-          {this.state.jobs.length > 0 ? this.state.jobs.map((job, job_index) => (
-            <ListItem button key={job_index}>
-              <ListItemText primary={job.firstName} />
-            </ListItem>
-          )): 'No Jobs posted yet'}
-        </List>
-        </div>
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-{/* this is where the JobDetail component will be when item in the list is clicked. */}
-      </main>
-    </div>
-  );
-}
+export default ViewJobs;
+
+
+// {props.jobs.length > 0 ? props.jobs.map((job, job_index) => (
+//   <ListItem button key={job_index}>
+//     <ListItemText primary={job.firstName} />
+//   </ListItem>
+// )) : 'No Jobs posted yet'}

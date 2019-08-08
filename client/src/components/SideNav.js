@@ -18,7 +18,7 @@ const routes = [
   
   },
   {
-    path: "/AvailableJob",
+    path: "/AvailableJobs",
     exact: true,
  
   },

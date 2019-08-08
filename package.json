@@ -2,8 +2,15 @@
   "name": "mow-n-go",
   "version": "1.0.0",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,23 +18,22 @@
     "url": "git+https://github.com/cwright2733/Mow-N-Go.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jacob David, Cameron Wright",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cwright2733/Mow-N-Go/issues"
   },
   "homepage": "https://github.com/cwright2733/Mow-N-Go#readme",
   "dependencies": {
-    "@material-ui/core": "^4.2.1",
     "axios": "^0.19.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
-    "mongoose": "^5.6.7",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router": "^5.0.1",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.0.1",
-    "recompose": "^0.30.0"
+    "mongoose": "^5.6.7"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "concurrently": "^4.1.1",
+    "mocha": "^6.2.0",
+    "nodemon": "^1.19.1"
   }
 }

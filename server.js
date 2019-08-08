@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
 // Loading API routes
-app.use('/api', routes);
+app.use(routes);
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));

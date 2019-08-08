@@ -1,39 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ListItem from '@material-ui/core/ListItem';
 import "../styles/JobDetail.css";
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
-function Job({ firstName, lastName, phoneNum, email, address, trimHedges, edgeLawn, mowGrass, rakeLeaves, instructions}) {
-    return (
-      <ListItem>
-        <Row className="flex-wrap-reverse">
-          <Col size="md-8">
-            <h3 className="font-italic">{title}</h3>
-            {subtitle && <h5 className="font-italic">{subtitle}</h5>}
-          </Col>
-          <Col size="md-4">
-            <div className="btn-container">
-              <a className="btn btn-light" target="_blank" rel="noopener noreferrer" href={link}>
-                View
-              </a>
-              <Button />
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-6">
-            <p className="font-italic small">Written by {authors}</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="12 sm-4 md-2">
-            <img className="img-thumbnail img-fluid w-100" src={image} alt={title} />
-          </Col>
-          <Col size="12 sm-8 md-10">
-            <p>{description}</p>
-          </Col>
-        </Row>
-      </ListItem>
-    );
-  }
-  
-  export default Book;
-  
+function JobDetail({ firstName, lastName, phoneNum, email, address, trimHedges, edgeLawn, mowGrass, rakeLeaves, instructions }) {
+  return (
+    <ListItem>
+      <Grid container spacing={3}>
+        <Grid item xs={8}>
+          <h3 className="font-italic"> Posted by: {firstName} {lastName} </h3>
+        </Grid>
+        <Grid item xs={6}>
+          <h4 className="font-italic">Contact details</h4>
+          <br></br>
+          <ul>
+            <li>Phone:{phoneNum}</li>
+            <li>Email:{email}</li>
+            <li>Address:{address}</li>
+          </ul>
+        </Grid>
+        <hr></hr><Grid item xs={6}>
+          <h5 className="font-italic small">Requested services:</h5>
+          <ul>
+            {trimHedges ? <li>Trim Hedges</li> : ''}
+            {edgeLawn ? <li>Edge Lawn</li> : ''}
+            {mowGrass ? <li>Mow Grass</li> : ''}
+            {rakeLeaves ? <li>Rake Leaves</li> : ''}
+          </ul>
+        </Grid>
+        <Grid item xs={8}>
+          <h5 className="font-italic small">Additional instructions:</h5>
+          <p>{instructions}</p>
+        </Grid>
+        <Button variant="contained" color="primary">
+          Accept this Job!
+    </Button>
+      </Grid>
+    </ListItem>
+  );
+}
+
+export default JobDetail;

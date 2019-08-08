@@ -3,7 +3,7 @@ const router = require("express").Router();
 const jobRoutes = require("./jobRoutes");
 
 // Book routes
-router.use("/jobs", jobRoutes);
+router.use("/api/jobs", jobRoutes);
 
 // render the html page for all others
 router.use(function(req, res) {
