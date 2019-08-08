@@ -59,7 +59,11 @@ export default function PermanentDrawerLeft(props) {
           <div className={classes.toolbar} />
           <div className='jobList'>
             <List>
-
+            // {props.jobs.length > 0 ? props.jobs.map((job, job_index) => (
+                <ListItem button key={job_index}>
+                    <ListItemText primary={job.firstName} />
+                </ListItem>
+                )) : 'No Jobs posted yet'}
             </List>
           </div>
         </Drawer>

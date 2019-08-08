@@ -14,18 +14,15 @@ const routes = [
   },
   {
     path: "/RequestJob",
-    exact: true,
-  
+    exact: true, 
   },
   {
     path: "/AvailableJobs",
     exact: true,
- 
   },
   {
     path: "/Ratings",
     exact: true,
- 
   }
 ];
 
@@ -49,7 +46,7 @@ function SideNav() {
             </li>
           </ul>
 
-          {routes.map((route, index) => (
+          {/* {routes.map((route, index) => (
             // You can render a <Route> in as many places
             // as you want in your app. It will render along
             // with any other <Route>s that also match the URL.
@@ -77,8 +74,8 @@ function SideNav() {
               exact={route.exact}
               component={route.main}
             />
-          ))}
-        </div>
+          ))}*/}
+          </div>
       </div>
     </Router>
   );

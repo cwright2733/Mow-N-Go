@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "../styles/RequestJob.css";
 import API from "../util/API";
 import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 
 
 class RequestJob extends Component {

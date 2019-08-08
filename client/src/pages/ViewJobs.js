@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import API from '../util/API';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import JobDetail from '../components/JobDetail';
 import Container from '@material-ui/core/Container';
+import JobDetail from '../components/JobDetail';
+import PermanentDrawerLeft from "../components/Drawer";
 
+// import CssBaseline from '@material-ui/core/CssBaseline';
+// import Typography from '@material-ui/core/Typography';
+// import List from '@material-ui/core/List';
+// import ListItem from '@material-ui/core/ListItem';
+// import ListItemText from '@material-ui/core/ListItemText';
 
 class ViewJobs extends Component {
   
@@ -55,10 +56,3 @@ class ViewJobs extends Component {
 };
 
 export default ViewJobs;
-
-
-// {props.jobs.length > 0 ? props.jobs.map((job, job_index) => (
-//   <ListItem button key={job_index}>
-//     <ListItemText primary={job.firstName} />
-//   </ListItem>
-// )) : 'No Jobs posted yet'}
